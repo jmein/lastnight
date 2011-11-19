@@ -20,8 +20,8 @@ public class Board {
 		}
 	}
 	
-	private static byte[] edger(int x, int y, int maxX, int maxY){
-		byte[] arr= new byte[9];
+	private static int[] edger(int x, int y, int maxX, int maxY){
+		int[] arr= new int[9];
 		for(int i=0; i<9; i++)
 			arr[i]=1;
 		arr[4]=0;

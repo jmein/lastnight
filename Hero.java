@@ -18,7 +18,7 @@ public class Hero extends Figure{
 	}
 	
 	public static boolean[] throughness(){
-		boolean answer = {true,true,true,false,false};
+		boolean[] answer = {true,true,true,false,false};
 		return answer;
 	}
 
