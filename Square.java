@@ -1,10 +1,14 @@
+import java.util.ArrayList;
 
 public class Square {
 	
 	int x;
 	int y;
 	int building;		//building 0 is exterior
-	Board home;
+	Board town;
+	Building house;
+	java.util.ArrayList<Hero> herolist;
+	java.util.ArrayList<Zombie> zombielist;
 	
 	byte[] edge;		/*
 									stores connections to squares:
@@ -26,32 +30,34 @@ public class Square {
 		this.y = y;
 		this.building = building;
 		this.edge = edges;
-		this.home = gameBoard;
+		this.town = gameBoard;
+		this.herolist = new java.util.ArrayList<Hero>();
+		this.zombielist = new java.util.ArrayList<Zombie>();
 	}
 	
 	public Square inDir(byte dir){
 		if(dir == 0)
-			return this.home.squareAt(this.x-1, this.y-1);
+			return this.town.squareAt(this.x-1, this.y-1);
 		else if (dir == 1)
-			return this.home.squareAt(this.x, this.y-1);
+			return this.town.squareAt(this.x, this.y-1);
 		else if (dir == 2)
-			return this.home.squareAt(this.x+1, this.y-1);
+			return this.town.squareAt(this.x+1, this.y-1);
 		else if (dir == 3)
-			return this.home.grid[this.x-1][this.y];
+			return this.town.grid[this.x-1][this.y];
 		else if (dir == 4)
 			return this;
 		else if (dir == 5)
-			return this.home.grid[this.x+1][this.y];
+			return this.town.grid[this.x+1][this.y];
 		else if (dir == 6)
-			return this.home.grid[this.x-1][this.y+1];
+			return this.town.grid[this.x-1][this.y+1];
 		else if (dir == 7)
-			return this.home.grid[this.x][this.y+1];
+			return this.town.grid[this.x][this.y+1];
 		else if (dir == 8)
-			return this.home.grid[this.x+1][this.y+1];
+			return this.town.grid[this.x+1][this.y+1];
 		else
 			return this;
 	}
-	
+/*	
 	public void fight(Hero living, Zombie undead){
 		int[] hd = Dice.rolld(6, living.fightDice);
 		System.out.print(living.name + " rolls: ");
@@ -68,19 +74,13 @@ public class Square {
 			System.out.println(living.name + " won the fight!");
 			if(Dice.hasDoubles(hd)){
 				System.out.println(living.name + " wounds "+ undead.name);
-				undead.health--;
-				if(undead.health == 0){
-					System.out.println(living.name + " kills " + undead.name +"!");
-				}
+				undead.wound();
 			}
 		}
 		else {
 			System.out.println(living.name + " lost the fight...");
-			living.health--;
-			if(living.health == 0){
-				System.out.println(living.name + " died...");
-			}
+			living.wound();
 		}
 	}
-		
+*/		
 }

@@ -23,8 +23,7 @@ public class Dice {
 		for(int i=0; i<rolls; i++){
 			dice[i]=Die.rolld(sides);
 		}
-		Arrays.sort(dice);
-		return dice;
+		return revSort(dice);
 	}
 	
 	public static int[] rolld(int[] sides){
@@ -32,8 +31,7 @@ public class Dice {
 		for(int i=0; i<sides.length; i++){
 			dice[i]=Die.rolld(sides[i]);
 		}
-		Arrays.sort(dice);
-		return dice;
+		return revSort(dice);
 	}
 	
 	public static int max(int[] dice){
@@ -64,6 +62,15 @@ public class Dice {
 			}
 		}
 		return false;
+	}
+
+	public static int[] revSort(int[] dice){
+		Arrays.sort(dice);
+		int[] newDice = new int[dice.length];
+		for(int i=0; i<dice.length; i++){
+			newDice[i]=dice[dice.length-1-i];
+		}
+		return newDice;
 	}
 	
 }

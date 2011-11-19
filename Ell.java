@@ -1,7 +1,8 @@
 
 public class Ell {
 	
-	Square[][][] squares = new  Square[3][3][3];
+	Square[][] squares = new  Square[6][6];
 	Building[] buildingList;
+
 	
 }

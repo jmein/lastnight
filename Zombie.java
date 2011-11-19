@@ -6,6 +6,7 @@ public class Zombie extends Figure{
     this.fightDice = 1;
     this.moveThrough = /*{true,true,true,true,false};*/Zombie.throughness();
     this.location = pit;
+    pit.zombielist.add(this);
   
   }
   
@@ -16,6 +17,12 @@ public class Zombie extends Figure{
   
   void answer(String question){
 	  System.out.println("Urgh....");
+  }
+
+  void die(){
+	
+	System.out.println(this.name+" dies!");  
+    	this.location.zombielist.remove(this);
   }
 
 }
