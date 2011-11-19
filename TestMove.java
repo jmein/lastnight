@@ -13,7 +13,7 @@ public class TestMove {
 		
 		while(true){
 			System.out.println("Which way do you want to go?");
-			clumsy.moveTo(in.nextByte());
+			clumsy.moveTo(in.nextInt());
 			System.out.println(clumsy.answer("Where are you?"));
 		}
 		

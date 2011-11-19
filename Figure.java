@@ -6,21 +6,22 @@ public abstract class Figure{
 	public int maxHealth;
 	public int health;
 	public int fightDice;
-	public Square location;  //maybe just coordinates?
-                            //and then Square location = Board.squareAt(int x, int y) ?
-	
+	public Square location;  
 	boolean moveThrough[]; 
 			
-	public void moveTo(byte direction){
-		byte dir = (byte)(direction -1);
+	public void moveTo(int direction){
+		
+		int dir = ((direction--)%9);
 		while(! this.moveThrough[this.location.edge[dir]]){
 			System.out.println("Try again");
-			dir = (byte)(new Scanner(System.in).nextByte()-1);
+			dir = (int)(new Scanner(System.in).nextByte()-1);
 		}
 		this.location = this.location.inDir(dir);
+
 	}
 
 	public int[] fightRoll(){
+
 		System.out.print(this.name + " rolls:");
 		int[] dice = Dice.rolld(6,this.fightDice);
 		for(int i=0;i<fightDice;i++){
@@ -28,15 +29,17 @@ public abstract class Figure{
 		}
 		System.out.println();
 		return dice;
+
 	}
 	  
 	public void wound(){
 	
 		System.out.println(this.name + " takes a wound");
 		this.health--;
-		if (this.health == 0)
+		if (this.health == 0){
 			this.die();
-	
+		}
+
 	}
 
 	abstract void die();
