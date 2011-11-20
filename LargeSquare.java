@@ -1,0 +1,4 @@
+
+class LargeSquare extends Square{
+
+}

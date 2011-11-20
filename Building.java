@@ -1,7 +1,7 @@
 
-public class Building {
-	
-	public String name;
-	public Board town;
-	
+class Building{
+
+	private String name;
+	private Board town;
+
 }

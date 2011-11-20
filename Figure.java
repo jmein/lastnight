@@ -1,47 +1,75 @@
 import java.util.Scanner;
 
-public abstract class Figure{
+class Figure{
 
-	public String name;
-	public int maxHealth;
-	public int health;
-	public int fightDice;
-	public Square location;  
-	boolean moveThrough[]; 
-			
-	public void moveTo(int direction){
-		
-		int dir = ((direction--)%9);
-		while(! this.moveThrough[this.location.edge[dir]]){
-			System.out.println("Try again");
-			dir = (int)(new Scanner(System.in).nextByte()-1);
-		}
-		this.location = this.location.inDir(dir);
+	private String name;
+	private int maxHP;
+	private int hp;
+	private int fDice;
+	private Square here;
+	private boolean[] thru;
+
+	Figure(String nomen, int healths, int dices, Square place, boolean[] move){
+
+		this.name = nomen;
+		this.hp = this.maxHP = healths;
+		this.fDice = dices;
+		this.here = place;
+		this.thru = move;
 
 	}
 
-	public int[] fightRoll(){
+	void makeName(String newName){this.name = newName;}
+	void setHP(int healths){this.hp = this.maxHP = healths;}
+	String tag(){return this.name;}
+	int[] hasHP(){
+		int[] answer = {this.hp, this.maxHP};
+		return answer;
+	}
+	int rolls(){return this.fDice;}
+	Square isAt(){return this.here;}
 
-		System.out.print(this.name + " rolls:");
-		int[] dice = Dice.rolld(6,this.fightDice);
-		for(int i=0;i<fightDice;i++){
+	boolean moveTo(int dir){
+
+		if(this.thru[this.here.edge(dir)]){
+			this.here = this.here.inDir(dir);
+			return true;
+		}
+		else {
+			return false;
+		}
+
+	}
+
+	int[] fRoll(){
+
+		System.out.print(this.name + "rolls:");
+		int[] dice = Dice.rolld(6, this.fDice);
+		for(int i=0; i<fDice; i++){
 			System.out.print(" " + dice[i]);
 		}
 		System.out.println();
 		return dice;
 
 	}
-	  
-	public void wound(){
-	
+
+	void wound(){
+
 		System.out.println(this.name + " takes a wound");
-		this.health--;
-		if (this.health == 0){
-			this.die();
+		this.hp--;
+		if(this.hp == 0){
+			this.dies();
 		}
 
 	}
 
-	abstract void die();
+	void heal(){this.hp = this.maxHP;}
+	void heal(int pts){
+		this.hp += pts;
+		if (this.hp > this.maxHP)
+			hp = maxHP;
+	}
+
+	void dies(){}
 
 }

@@ -1,12 +1,11 @@
 
-public class ZombieHero extends Zombie{
-	
+class ZombieHero extends Zombie{
+
 	ZombieHero(Hero corpse){
-	
-		super(corpse.location);
-		this.name=("Zombie " + corpse.name);
-		this.health = this.maxHealth = corpse.maxHealth;
-	
+		super(corpse.isAt());
+
+		this.makeName("Zombie " + corpse.tag());
+		this.setHP(corpse.hasHP()[1]);
 	}
-	
+
 }

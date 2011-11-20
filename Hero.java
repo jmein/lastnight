@@ -1,46 +1,52 @@
-public class Hero extends Figure{
 
-	public boolean winOnTie;
-	public boolean student;
-	public boolean female;
+class Hero extends Figure{
 
-	Hero(String moniker, boolean kid, boolean xx, int healthBoxes, Square start){
+	private boolean winTie;
+	private boolean stdnt;
+	private boolean fm;
+	private boolean law;
+	private boolean mil;
+	private boolean strg;
+	private boolean med;
+	private boolean holy;
 
-		this.name = moniker;
-		this.health = this.maxHealth = healthBoxes;
-		this.fightDice = 2;
-		this.moveThrough = Hero.throughness();
-		this.student = kid;
-		this.female = xx;
-		this.location = start;
-		start.herolist.add(this);
-
-	}
+	Hero(String moniker, int healths, Square start){
+		super(moniker, healths, 2, start, Hero.thru());
 	
-	public static boolean[] throughness(){
+		start.add(this);
+		start.city().add(this);
+	
+	}
+
+	static boolean[] thru(){
 		boolean[] answer = {true,true,true,false,false};
 		return answer;
 	}
 
-	public void die(){
-		System.out.println(this.name + " dies...");
+	void dies(){
+	
+		System.out.println(this.tag() + " dies...");
 		new ZombieHero(this);
+		this.isAt().rem(this);
+		this.isAt().city().rem(this);
+	
 	}
 
-	public void fight(Zombie undead){
-		
-		int[] hd = this.fightRoll();
-		int[] zd = undead.fightRoll();
+	void fight(Zombie undead){
 
-		if( (hd[0] > zd[0]) || ( (hd[0] == zd[0]) && this.winOnTie) ){
-			System.out.println(this.name + " wins!");
+		int[] hd = this.fRoll();
+		int[] zd = undead.fRoll();
+
+		if( (hd[0] > zd[0]) || ( (hd[0] == zd[0]) && this.winTie) ){
+			System.out.println(this.tag() + " wins!");
 			if( Dice.hasDoubles(hd) ){
 				undead.wound();
 			}
 		}
-		else {
+		else{
 			this.wound();
 		}
 
 	}
+
 }

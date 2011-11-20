@@ -1,8 +1,8 @@
 import java.util.Arrays;
 
-public class Dice {
+class Dice {
 	
-	public static int sumd(int sides, int rolls){
+	static int sumd(int sides, int rolls){
 		int sum = 0;
 		for(int i=0; i<rolls; i++){
 			sum += Die.rolld(sides);
@@ -10,7 +10,7 @@ public class Dice {
 		return sum;
 	}
 	
-	public static int sumd(int[] sides){
+	static int sumd(int[] sides){
 		int sum=0;
 		for(int i=0; i<sides.length; i++){
 			sum += Die.rolld(sides[i]);
@@ -18,7 +18,7 @@ public class Dice {
 		return sum;
 	}
 	
-	public static int[] rolld(int sides, int rolls){
+	static int[] rolld(int sides, int rolls){
 		int[] dice = new int[rolls];
 		for(int i=0; i<rolls; i++){
 			dice[i]=Die.rolld(sides);
@@ -26,7 +26,7 @@ public class Dice {
 		return revSort(dice);
 	}
 	
-	public static int[] rolld(int[] sides){
+	static int[] rolld(int[] sides){
 		int[] dice = new int[sides.length];
 		for(int i=0; i<sides.length; i++){
 			dice[i]=Die.rolld(sides[i]);
@@ -34,7 +34,7 @@ public class Dice {
 		return revSort(dice);
 	}
 	
-	public static int max(int[] dice){
+	static int max(int[] dice){
 		int maximum = dice[0];
 		for(int i=1; i<dice.length; i++){
 			if(dice[i]>maximum){
@@ -44,7 +44,7 @@ public class Dice {
 		return maximum;
 	}
 	
-	public static int min(int[] dice){
+	static int min(int[] dice){
 		int minimum = dice[0];
 		for(int i=1; i<dice.length; i++){
 			if(dice[i]>minimum){
@@ -54,7 +54,7 @@ public class Dice {
 		return minimum;
 	}
 	
-	public static boolean hasDoubles(int[] dice){
+	static boolean hasDoubles(int[] dice){
 		for(int i=0; i<(dice.length-1); i++){
 			for(int j=(i+1); j<dice.length; j++){
 				if(dice[i] == dice[j])
@@ -64,7 +64,7 @@ public class Dice {
 		return false;
 	}
 
-	public static int[] revSort(int[] dice){
+	private static int[] revSort(int[] dice){
 		Arrays.sort(dice);
 		int[] newDice = new int[dice.length];
 		for(int i=0; i<dice.length; i++){
