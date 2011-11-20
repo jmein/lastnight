@@ -2,12 +2,20 @@ lastnight emulates the board game "Last Night on Earth, the Zombie Game", create
 
 v0.0
 
+2011.11.20:
+classes' variables are now private.
+Center will model center grid of board: either 3x3 LargeSquares or 6x6 Squares with Building manor
+LargeSquare takes the space of 4 squares: is one square. fun.
+
 2011.11.19:
-formatted nicely.
+formatted nicelier.
 Board contains a rectangular grid of Squares, constructors create empty boards.
 Building does nothing. has a name and belongs to a Board.
 charlist contains a list of the characters that must be included as heroes.
 Card,Deck nonexistent, will create decks of cards used in game.
+Die has a single method rolld(int sides). rolls a d<sides>.
+Dice has many methods relating to Die. sums and arrays of various mixes of dice, max and min of int[],
+	a descending sort function...
 Ell has many Squares and a list of Buildings. Not yet implemented. Will create corners of the board:
 	6x6 grid less a 3x3 corner. Random Buildings from cards selected by Ell.
 Figure has basics of figures( zombies and heros ): movement, wound taking, rolling dice in fights,
