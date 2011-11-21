@@ -8,6 +8,7 @@ class Square{
 	private Building house;
 	private ArrayList<Hero> heroes;
 	private ArrayList<Undead> zombies;
+	private boolean pit;
 
 	private int[] edge;/*	tells you the type of edge at connection (0 is self)
 				4 3 2		edge[i] = 0 -> i=0
@@ -23,6 +24,7 @@ class Square{
 		this.town = gameBoard;
 		this.heroes = new ArrayList<Hero>();
 		this.zombies = new ArrayList<Undead>();
+		this.pit = false;
 	}
 
 	int[] isAt(){
@@ -35,6 +37,14 @@ class Square{
 	Board city(){return this.town;}
 	int edge(int dir){return this.edge[dir];}
 	Undead zed(int index){return this.zombies.get(index);}
+
+	boolean newPit(){
+		if (this.pit == true) return false;
+		else {
+			this.pit = true;
+			return true;
+		}
+	}
 
 	void rem(Hero human){this.heroes.remove(human);}
 	void rem(Undead zed){this.zombies.remove(zed);}

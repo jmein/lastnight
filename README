@@ -4,7 +4,7 @@ v0.0
 
 2011.11.20:
 variables privatized.
-Zombie abstract: children ZombieHero and StdZombie
+Undead abstract-general zombie-children ZombieHero and StdZombie
 Dice/Die abstract. Dice includes more fun methods
 Added:
 Center. the middle of the game board. A grid of 6x6 Squares including a Building,
