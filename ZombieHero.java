@@ -1,11 +1,8 @@
 
-class ZombieHero extends Zombie{
+class ZombieHero extends Undead{
 
 	ZombieHero(Hero corpse){
-		super(corpse.isAt());
-
-		this.makeName("Zombie " + corpse.tag());
-		this.setHP(corpse.hasHP()[1]);
+		super("Zombie "+corpse.tag(),corpse.hasHP()[1],corpse.isAt());
 	}
 
 }

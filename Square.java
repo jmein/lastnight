@@ -1,75 +1,60 @@
 import java.util.ArrayList;
 
 class Square{
-
 	private int x;
 	private int y;
-	private int building;	//0 -> exterior
+	private int building;
 	private Board town;
 	private Building house;
 	private ArrayList<Hero> heroes;
-	private ArrayList<Zombie> zombies;
+	private ArrayList<Undead> zombies;
 
-	private int edge[];	/*type of edge over connection at index:
-				   4 3 2	edge[] = 0 -> this square
-				   5 0 1	edge[] = 1 -> normal edge
-				   6 7 8	edge[] = 2 -> door (wall)
-				 		edge[] = 3 -> wall
-				 		edge[] = 4 -> board edge
-				*/
+	private int[] edge;/*	tells you the type of edge at connection (0 is self)
+				4 3 2		edge[i] = 0 -> i=0
+				5 0 1		edge[i] = 1 -> normal open edge
+				6 7 8		edge[i] = 2 -> door (wall)
+						edge[i] = 3 -> wall
+						edge[i] = 4 -> board edge	*/
 
-	Square(int x, int y, int[]edges, Board gameBoard){
+	Square(int x, int y, int[] edges, Board gameBoard){
 		this.x = x;
 		this.y = y;
 		this.edge = edges;
 		this.town = gameBoard;
-	
 		this.heroes = new ArrayList<Hero>();
-		this.zombies = new ArrayList<Zombie>();
+		this.zombies = new ArrayList<Undead>();
 	}
 
-	Square(){}
-	
 	int[] isAt(){
-		int[] xy = {this.x,this.y};
-		return xy;
-	}
-	void add(Hero human){this.heroes.add(human);}
-	void rem(Hero human){this.heroes.remove(human);}
-	void add(Zombie zed){this.zombies.add(zed);}
-	void rem(Zombie zed){this.zombies.add(zed);}
-	Board city(){return this.town;}
+		int[] where = {this.x,this.y};
+		return where;}
+	int x(){return this.x;}
+	int y(){return this.y;}
+	int zCt(){return this.zombies.size();}
 	Building isIn(){return this.house;}
+	Board city(){return this.town;}
+	int edge(int dir){return this.edge[dir];}
+	Undead zed(int index){return this.zombies.get(index);}
 
-	int edge(int dir){
-		return edge[dir];
+	void rem(Hero human){this.heroes.remove(human);}
+	void rem(Undead zed){this.zombies.remove(zed);}
+	void add(Hero human){this.heroes.add(human);}
+	void add(Undead zed){this.zombies.add(zed);}
+
+	void chEd(int edge, int type){
+		this.edge[edge] = type;
 	}
 
 	Square inDir(int dir){
-		if(dir == 8)
-			return this.town.sqAt(this.x+1,this.y-1);
-		else if(dir == 7)
-			return this.town.sqAt(this.x,this.y-1);
-		else if(dir == 6)
-			return this.town.sqAt(this.x-1,this.y-1);
-		else if(dir == 5)
-			return this.town.sqAt(this.x-1,this.y);
-		else if(dir == 4)
-			return this.town.sqAt(this.x-1,this.y+1);
-		else if(dir == 3)
-			return this.town.sqAt(this.x,this.y+1);
-		else if(dir == 2)
-			return this.town.sqAt(this.x+1,this.y+1);
-		else if(dir == 1)
-			return this.town.sqAt(this.x+1,this.y);
-		else
-			return this;
-	}
-
-	void ched(int dir, int type){
-		if( (dir/8 == 0) && (type/5 == 0) && (dir != 0) && (type != 0)){
-			this.edge[dir] = type;
-		}
+		if(dir==8) return this.town.sqAt(this.x+1, this.y-1);
+		else if(dir==7) return this.town.sqAt(this.x, this.y-1);
+		else if(dir==6) return this.town.sqAt(this.x-1, this.y-1);
+		else if(dir==5) return this.town.sqAt(this.x-1, this.y);
+		else if(dir==4) return this.town.sqAt(this.x-1, this.y+1);
+		else if(dir==3) return this.town.sqAt(this.x, this.y+1);
+		else if(dir==2) return this.town.sqAt(this.x+1, this.y+1);
+		else if(dir==1) return this.town.sqAt(this.x+1, this.y);
+		else return this;
 	}
 
 }

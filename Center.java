@@ -1,17 +1,11 @@
 
 class Center{
 
-	private Square[][] squares;
-	private Board town;
+	private Square[][] grid;
 
-	Center(Board gameBoard, boolean largeSquares){
-		if (largeSquares){
-			this.squares = new LargeSquare[3][3];
-		}
-		else {
-			this.squares = new Square[6][6];
-		}
-		this.town = gameBoard;
+	Center(boolean largeSquares){
+		if(largeSquares) this.grid = new LargeSquare[3][3];
+		else this.grid = new Square[6][6];
 	}
 
 }
