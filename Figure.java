@@ -8,19 +8,28 @@ abstract class Figure{
 	private int fDice;
 	private Square here;
 	private boolean[] thru;
+	private Board town;
 
-	Figure(String nomen, int healths, int dices, Square where, boolean[] move){
+	Figure(String nomen,int healths,int dices,Square where,boolean[] move){
 		this.name = nomen;
 		this.hp = this.maxHP = healths;
 		this.fDice = dices;
 		this.here = where;
 		this.thru = move;
+		this.town = where.isIn();
 	}
 
 	String tag(){return this.name;}
 	int[] hasHP(){int[] healths = {this.hp, this.maxHP};return healths;}
 	int dices(){return this.fDice;}
 	Square isAt(){return this.here;}
+	Board isIn(){return this.town;}
+
+	void heal(){this.hp = maxHP;}
+	void heal(int pts){
+		if(this.hp + pts < maxHP) this.hp = (this.hp + pts);
+		else this.heal();
+	}
 
 	void moveTo(Square dest){
 		//sounds good;

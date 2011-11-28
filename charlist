@@ -1,10 +1,10 @@
-Sally{
+Lucky{
 
-student,female
+#student,female
 START: high school
-lucky: force reroll
+#lucky: force reroll
 lightweight: no gun but revolver
-youth:
+#youth:
 
 }
 
@@ -13,7 +13,7 @@ Jenny{
 student,female
 START: farm house
 handy: +- 1 to hand weapon checks
-youth:
+#youth:
 farm girl: rolls extra fight die in barn/cornfield
 
 }
@@ -24,16 +24,16 @@ student,female
 START: high school
 hide: cancel a fight on 4+
 beautiful: male characters roll extra fight dice in amanda's square
-youth
+#youth
 
 }
 
-Billy{
+Speedy{
 
-student,male
+#student,male
 START: high school
 trackstar: +1 to movement
-youth:
+#youth:
 
 }
 
@@ -43,7 +43,7 @@ student,male
 START: gym
 blitz: can continue movement after running into zombies
 tough: wins on ties
-youth:
+#youth:
 
 }
 
@@ -52,13 +52,13 @@ Kenny{
 student,strange,male
 START:grocery
 cleanup on aisle 7: may discard Item or take a wound to kill
-youth:
+#youth:
 
 }
 
-Jake{
+Clumsy{
 
-strange,male
+#strange,male
 START:road out of town
 resourceful: draws 2 and picks 1
 
@@ -87,7 +87,7 @@ Father{
 holy,male
 START: church
 holy man: no guns, no "this could be our last night"
-strength of spirit: may take a wound to cancel ant zombie card on 3+
+strength of spirit: may take a wound to cancel any zombie card on 3+
 
 }
 
@@ -99,10 +99,10 @@ heals one wound from other hero at end of hero turn
 
 }
 
-Sam{
+Captain Awesomepants{
 
-military,male
-health=4
+#military,male
+#health=4
 START: diner
 brawling: cancel any zombie fight card on 4+
 

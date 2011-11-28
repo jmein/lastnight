@@ -2,6 +2,11 @@ lastnight emulates the board game "Last Night on Earth, the Zombie Game", create
 
 v0.0
 
+2011.11.26:
+Hero abstracted. abstract children Student and Adult give basic division of
+	Heroes. Individual characters get own classes.
+Lucky, Speedy, Clumsy, Captain Awesomepants classes exist.
+
 2011.11.20:
 variables privatized.
 Undead abstract-general zombie-children ZombieHero and StdZombie

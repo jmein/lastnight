@@ -1,37 +1,39 @@
 
-class Hero extends Figure{
+abstract class Hero extends Figure{
 
-	private boolean winTie;
-	private boolean young;
-	private boolean fm;
-	private boolean mil;
-	private boolean med;
-	private boolean holy;
-	private boolean strg;
+	private static boolean[] thru = {false,true,true,false,false};
+	private boolean[] trait;	// fm, holy, med, mil, strg, wT
 
-	Hero(String nomen, int healths, Square start){
-		super(nomen, healths, 2, start, Hero.thru());
+	Hero(String nomen, int healths, Square start, boolean[] character){
+		super(nomen, healths, 2, start, Hero.thru);
 		start.add(this);
-		start.city().add(this);
+		this.isIn().add(this);
+		this.trait = character;
 	}
 
-	static boolean[] thru(){
-		boolean[] answer = {false,true,true,false,false};
-		return answer;
+	boolean trt(int index){return this.trait[index];}
+	void mkTrt(int index, boolean maybe){this.trait[index]=maybe;}
+
+	void mvTo(int dir){
+		Square origin = this.isAt();
+		if(this.moveDir(dir)){
+			origin.rem(this);
+			this.isAt().add(this);
+		}
 	}
 
 	void dies(){
 		System.out.println(this.tag() + " dies...");
 		new ZombieHero(this);
 		this.isAt().rem(this);
-		this.isAt().city().rem(this);
+		this.isAt().isIn().kill(this);
 	}
 
 	void fight(Undead zed){
 		int[] hd = this.fRoll();
 		int[] zd = zed.fRoll();
 
-		if( (hd[0] > zd[0]) || ( (hd[0] == zd[0]) && this.winTie) ){
+		if( (hd[0] > zd[0]) || ( (hd[0] == zd[0]) && this.trt(5)) ){
 			System.out.println(this.tag() + " beats " + zed.tag() + "!");
 			if( Dice.hasDubs(hd) ) zed.wound();
 		}

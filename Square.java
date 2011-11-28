@@ -33,8 +33,8 @@ class Square{
 	int x(){return this.x;}
 	int y(){return this.y;}
 	int zCt(){return this.zombies.size();}
-	Building isIn(){return this.house;}
-	Board city(){return this.town;}
+	Building isPt(){return this.house;}
+	Board isIn(){return this.town;}
 	int edge(int dir){return this.edge[dir];}
 	Undead zed(int index){return this.zombies.get(index);}
 

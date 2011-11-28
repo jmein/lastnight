@@ -4,7 +4,7 @@ abstract class Undead extends Figure{
 	Undead(String nomen, int healths, Square pit){
 		super(nomen, healths, 1, pit, Undead.thru());
 		pit.add(this);
-		pit.city().add(this);
+		pit.isIn().add(this);
 	}
 
 	static boolean[] thru(){
@@ -15,7 +15,7 @@ abstract class Undead extends Figure{
 	void dies(){
 		System.out.println(this.tag() + " dies!");
 		this.isAt().rem(this);
-		this.isAt().city().rem(this);
+		this.isAt().isIn().kill(this);
 	}
 
 }

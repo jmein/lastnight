@@ -21,18 +21,18 @@ class LargeSquare extends Square{
 	}
 
 	Square inDir(int dir){	//replace old function b/c more edges
-		if(dir==12) return this.city().sqAt(this.x()+2, this.y());
-		else if(dir==11) return this.city().sqAt(this.x()+2, this.y()-1);
-		else if(dir==10) return this.city().sqAt(this.x()+1, this.y()-1);
-		else if(dir==9) return this.city().sqAt(this.x(), this.y()-1);
-		else if(dir==8) return this.city().sqAt(this.x()-1, this.y()-1);
-		else if(dir==7) return this.city().sqAt(this.x()-1, this.y());
-		else if(dir==6) return this.city().sqAt(this.x()-1, this.y()+1);
-		else if(dir==5) return this.city().sqAt(this.x()-1, this.y()+2);
-		else if(dir==4) return this.city().sqAt(this.x(), this.y()+2);
-		else if(dir==3) return this.city().sqAt(this.x()+1, this.y()+2);
-		else if(dir==2) return this.city().sqAt(this.x()+2, this.y()+2);
-		else if(dir==1) return this.city().sqAt(this.x()+2, this.y()+1);
+		if(dir==12) return this.isIn().sqAt(this.x()+2, this.y());
+		else if(dir==11) return this.isIn().sqAt(this.x()+2, this.y()-1);
+		else if(dir==10) return this.isIn().sqAt(this.x()+1, this.y()-1);
+		else if(dir==9) return this.isIn().sqAt(this.x(), this.y()-1);
+		else if(dir==8) return this.isIn().sqAt(this.x()-1, this.y()-1);
+		else if(dir==7) return this.isIn().sqAt(this.x()-1, this.y());
+		else if(dir==6) return this.isIn().sqAt(this.x()-1, this.y()+1);
+		else if(dir==5) return this.isIn().sqAt(this.x()-1, this.y()+2);
+		else if(dir==4) return this.isIn().sqAt(this.x(), this.y()+2);
+		else if(dir==3) return this.isIn().sqAt(this.x()+1, this.y()+2);
+		else if(dir==2) return this.isIn().sqAt(this.x()+2, this.y()+2);
+		else if(dir==1) return this.isIn().sqAt(this.x()+2, this.y()+1);
 		else return this;
 	}
 
