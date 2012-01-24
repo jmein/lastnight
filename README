@@ -2,6 +2,17 @@ lastnight emulates the board game "Last Night on Earth, the Zombie Game", create
 
 v0.0
 
+2012.01.24:
+Card introduced.
+Deck manages Cards.
+abstract HCard models cards for Hero players to use.
+    HEvent has helpful event for Heros.
+    Item a HCard that a Hero will hold.
+    Weapon a type of Item.
+abstract ZCard models cards for Zombie players.
+    ZEvent has helpful event for Zombies.
+Not yet implemented alongside other components. Nor do any specifics exist.
+
 2011.11.26:
 Hero abstracted. abstract children Student and Adult give basic division of
 	Heroes. Individual characters get own classes.
